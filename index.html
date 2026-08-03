@@ -334,6 +334,7 @@
       height: 100%;
       border: none;
       display: block;
+      min-height: 700px;
     }
 
     /* ===== RESPONSIVE ===== */
@@ -543,15 +544,13 @@
         <p id="survey-subtitle">Пожалуйста, ответьте на все вопросы формы</p>
       </div>
     </div>
-    <div class="survey-iframe-wrapper">
-      <iframe
-        id="survey-iframe"
-        title="Форма опроса"
-        allow="camera; microphone; fullscreen"
-        loading="lazy"
-      ></iframe>
+    <div class="survey-iframe-wrapper" id="survey-iframe-wrapper">
+      <!-- Яндекс Форма будет вставлена сюда динамически -->
     </div>
   </div>
+
+  <!-- Yandex Forms embed script -->
+  <script src="https://forms.yandex.ru/_static/embed.js"></script>
 
   <!-- ===================== JAVASCRIPT ===================== -->
   <script>
@@ -560,8 +559,9 @@
 
       // ===== CONFIG =====
       // Замените плейсхолдеры на реальные ссылки Яндекс Форм
+      // Формат: 'https://forms.yandex.ru/u/FORM_ID' (без ?iframe=1)
       const FORM_URLS = {
-        therapist:  'https://forms.yandex.ru/u/6a70550c9029020494f3f0f7?iframe=1',
+        therapist:  'https://forms.yandex.ru/u/6a70550c9029020494f3f0f7',
         specialist: '{{ССЫЛКА_ЯНДЕКС_ФОРМЫ_СПЕЦИАЛИСТ}}',
         admin:      '{{ССЫЛКА_ЯНДЕКС_ФОРМЫ_АДМИНИСТРАТОР}}',
         leader:     '{{ССЫЛКА_ЯНДЕКС_ФОРМЫ_РУКОВОДИТЕЛЬ}}'
@@ -581,7 +581,7 @@
       const btnStart      = document.getElementById('btn-start');
       const btnBackRoles  = document.getElementById('btn-back-roles');
       const btnBackSurvey = document.getElementById('btn-back-survey');
-      const surveyIframe  = document.getElementById('survey-iframe');
+      const surveyWrapper = document.getElementById('survey-iframe-wrapper');
       const roleNameEl    = document.getElementById('role-name');
       const roleCards     = document.querySelectorAll('.role-card');
 
@@ -612,8 +612,8 @@
 
       // Screen 3 → Screen 2
       btnBackSurvey.addEventListener('click', function () {
-        // Clear iframe to stop any loaded content
-        surveyIframe.src = 'about:blank';
+        // Clear form content
+        surveyWrapper.innerHTML = '';
         showScreen(screenRoles);
       });
 
@@ -626,26 +626,26 @@
           // Set title
           roleNameEl.textContent = ROLE_LABELS[role];
 
-          // Load iframe
+          // Clear previous form
+          surveyWrapper.innerHTML = '';
+
+          // Load form via Yandex embed
           if (url && url.indexOf('{{') === -1) {
-            surveyIframe.src = url;
+            var formId = url.split('/u/')[1];
+            if (formId) {
+              surveyWrapper.innerHTML =
+                '<iframe src="' + url + '?iframe=1" ' +
+                'name="ya-form-' + formId + '" ' +
+                'width="100%" frameborder="0" ' +
+                'allow="camera; microphone; fullscreen" ' +
+                'title="Форма опроса"></iframe>';
+            }
           } else {
-            // Placeholder: show a friendly message inside iframe
-            surveyIframe.src = 'about:blank';
-            var doc = surveyIframe.contentDocument || surveyIframe.contentWindow.document;
-            doc.open();
-            doc.write(
-              '<!DOCTYPE html><html><head><style>' +
-              'body{font-family:Inter,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;color:#718096;background:#f7fafb;}' +
-              '.msg{text-align:center;padding:2rem;}' +
-              '.msg h3{color:#1a365d;margin-bottom:0.5rem;}' +
-              '</style></head><body>' +
-              '<div class="msg"><h3>Форма скоро появится здесь</h3>' +
-              '<p>Ссылка на Яндекс Форму для роли &laquo;' + ROLE_LABELS[role] + '&raquo; ещё не добавлена.</p>' +
-              '<p style="margin-top:1rem;font-size:0.85rem;">Замените плейсхолдер <code>' + url + '</code> в коде страницы.</p></div>' +
-              '</body></html>'
-            );
-            doc.close();
+            // Placeholder: form link not yet added
+            surveyWrapper.innerHTML =
+              '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#718096;text-align:center;padding:2rem;">' +
+              '<div><h3 style="color:#1a365d;margin-bottom:0.5rem;">Форма скоро появится здесь</h3>' +
+              '<p>Ссылка на Яндекс Форму для роли &laquo;' + ROLE_LABELS[role] + '&raquo; ещё не добавлена.</p></div></div>';
           }
 
           showScreen(screenSurvey);
