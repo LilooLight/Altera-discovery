@@ -327,9 +327,12 @@
       width: 100%;
       min-height: 600px;
       height: calc(100vh - 70px);
+      display: flex;
+      justify-content: center;
     }
 
     .survey-iframe-wrapper iframe {
+      max-width: 700px;
       width: 100%;
       height: 100%;
       border: none;
@@ -541,7 +544,6 @@
       </button>
       <div class="survey-header-text">
         <h2 id="survey-title">Опрос для <span id="role-name"></span></h2>
-        <p id="survey-subtitle">Пожалуйста, ответьте на все вопросы формы</p>
       </div>
     </div>
     <div class="survey-iframe-wrapper" id="survey-iframe-wrapper">
