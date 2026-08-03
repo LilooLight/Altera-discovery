@@ -421,8 +421,24 @@
       border: none;
       display: block;
       min-height: 600px;
+    }
+
+    .survey-iframe-card {
+      max-width: 732px;
+      width: 100%;
+      height: 100%;
+      background: #fff;
       border-radius: 16px;
       box-shadow: 0 4px 32px rgba(62, 213, 187, 0.10), 0 1px 4px rgba(0, 0, 0, 0.04);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .survey-iframe-card iframe {
+      flex: 1;
+      border-radius: 10px;
+      min-height: 0;
     }
 
     /* ===== RESPONSIVE ===== */
@@ -475,6 +491,10 @@
       .survey-iframe-wrapper {
         min-height: 500px;
         padding: 24px 12px 12px;
+      }
+
+      .survey-iframe-card {
+        padding: 8px;
       }
     }
 
@@ -722,11 +742,12 @@
             var formId = url.split('/u/')[1];
             if (formId) {
               surveyWrapper.innerHTML =
+                '<div class="survey-iframe-card">' +
                 '<iframe src="' + url + '?iframe=1" ' +
                 'name="ya-form-' + formId + '" ' +
                 'width="100%" frameborder="0" ' +
                 'allow="camera; microphone; fullscreen" ' +
-                'title="Форма опроса"></iframe>';
+                'title="Форма опроса"></iframe></div>';
             }
           } else {
             // Placeholder: form link not yet added
