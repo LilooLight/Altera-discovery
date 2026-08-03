@@ -320,6 +320,8 @@
       font-size: 0.85rem;
       color: #718096;
       margin-top: 0.15rem;
+      line-height: 1.6;
+      max-width: 480px;
     }
 
     .survey-iframe-wrapper {
@@ -435,13 +437,12 @@
     <h1 class="welcome-title">Коллеги, нам очень нужна ваша помощь</h1>
 
     <div class="welcome-text">
-      <p>Мы создаём новую систему взамен устаревшей&nbsp;&mdash; понятную, логичную и действительно помогающую в работе. Чтобы она стала такой, нам необходим ваш бесценный опыт.</p>
-      <p>Опрос полностью анонимный. Мы не собираем личных данных, только честные проблемы и предложения. Никаких &laquo;санкций&raquo; за критику быть не может&nbsp;&mdash; нам важно знать правду.</p>
-      <p>Это займёт не более 3&ndash;4 минут. Спасибо, что помогаете нам создать инструмент, в&nbsp;котором вам самим будет приятно и легко работать.</p>
+      <p>Мы создаём новую систему взамен устаревшей&nbsp;&mdash; понятную, логичную и действительно помогающую в работе.
+      Чтобы она стала такой, нам необходим ваш бесценный опыт. Это займёт 3&ndash;4 минуты.</p>
     </div>
 
-    <button class="btn-primary" id="btn-start" aria-label="Начать опрос">
-      ПРОЙТИ ОПРОС
+    <button class="btn-primary" id="btn-start" aria-label="Выбрать роль и начать">
+      ВЫБРАТЬ РОЛЬ И НАЧАТЬ
       <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
         <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
       </svg>
@@ -451,8 +452,8 @@
   <!-- ===================== SCREEN 2 — ROLE SELECTION ===================== -->
   <div id="screen-roles" class="screen" role="main" aria-label="Выберите вашу роль">
     <div class="roles-header">
-      <h2>Укажите вашу роль</h2>
-      <p>Выберите вариант, который наиболее точно описывает вашу должность</p>
+      <h2>Кто вы?</h2>
+      <p>Выберите вашу роль&nbsp;&mdash; мы зададим правильные вопросы.</p>
     </div>
 
     <div class="roles-grid">
@@ -469,8 +470,8 @@
           </svg>
         </div>
         <div>
-          <h3>Терапевт</h3>
-          <p>Врач общего профиля, ведущий приём пациентов</p>
+          <h3>Врач первичного приёма (терапевт)</h3>
+          <p>Вы ведёте основной приём, назначаете процедуры и координируете лечение пациента.</p>
         </div>
       </div>
 
@@ -485,8 +486,8 @@
           </svg>
         </div>
         <div>
-          <h3>Врач-специалист</h3>
-          <p>Узкий специалист: невролог, кардиолог и др.</p>
+          <h3>Врач-специалист (УЗИ, невролог, стоматолог и др.)</h3>
+          <p>Вы принимаете пациентов по направлениям, проводите осмотры и заполняете заключения.</p>
         </div>
       </div>
 
@@ -503,8 +504,8 @@
           </svg>
         </div>
         <div>
-          <h3>Администратор и медперсонал</h3>
-          <p>Административный и вспомогательный медперсонал</p>
+          <h3>Администратор или медсестра</h3>
+          <p>Вы формируете расписание, заселяете пациентов, передаёте назначения и контролируете выписку.</p>
         </div>
       </div>
 
@@ -517,8 +518,8 @@
           </svg>
         </div>
         <div>
-          <h3>Руководитель санатория</h3>
-          <p>Главный врач, директор, управляющий персоналом</p>
+          <h3>Руководитель учреждения</h3>
+          <p>Вы управляете отделением: отчёты, загрузка персонала, ключевые показатели.</p>
         </div>
       </div>
     </div>
@@ -541,7 +542,8 @@
         Назад
       </button>
       <div class="survey-header-text">
-        <h2 id="survey-title">Опрос для <span id="role-name"></span></h2>
+        <h2 id="survey-title">Спасибо, что вы с нами</h2>
+        <p id="survey-subtitle">Опрос полностью анонимный. Мы не собираем личных данных, только честные проблемы и предложения. Никаких &laquo;санкций&raquo; за критику быть не может&nbsp;&mdash; нам действительно важно знать правду.</p>
       </div>
     </div>
     <div class="survey-iframe-wrapper" id="survey-iframe-wrapper">
@@ -567,13 +569,6 @@
         leader:     '{{ССЫЛКА_ЯНДЕКС_ФОРМЫ_РУКОВОДИТЕЛЬ}}'
       };
 
-      const ROLE_LABELS = {
-        therapist:  'Терапевта',
-        specialist: 'Врача-специалиста',
-        admin:      'Администратора и медицинского персонала',
-        leader:     'Руководителя санатория'
-      };
-
       // ===== DOM ELEMENTS =====
       const screenWelcome = document.getElementById('screen-welcome');
       const screenRoles   = document.getElementById('screen-roles');
@@ -582,7 +577,6 @@
       const btnBackRoles  = document.getElementById('btn-back-roles');
       const btnBackSurvey = document.getElementById('btn-back-survey');
       const surveyWrapper = document.getElementById('survey-iframe-wrapper');
-      const roleNameEl    = document.getElementById('role-name');
       const roleCards     = document.querySelectorAll('.role-card');
 
       // ===== NAVIGATION =====
@@ -622,9 +616,6 @@
         function selectRole() {
           var role = card.getAttribute('data-role');
           var url  = FORM_URLS[role];
-
-          // Set title
-          roleNameEl.textContent = ROLE_LABELS[role];
 
           // Clear previous form
           surveyWrapper.innerHTML = '';
