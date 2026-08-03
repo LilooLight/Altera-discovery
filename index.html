@@ -300,9 +300,16 @@
       border-bottom: 1px solid #dff5f0;
       padding: 1.25rem 2rem;
       display: flex;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .survey-header-inner {
+      max-width: 700px;
+      width: 100%;
+      display: flex;
       align-items: center;
       gap: 1rem;
-      flex-shrink: 0;
     }
 
     .survey-header .btn-back {
@@ -536,15 +543,17 @@
   <!-- ===================== SCREEN 3 — SURVEY IFRAME ===================== -->
   <div id="screen-survey" class="screen" role="main">
     <div class="survey-header">
-      <button class="btn-back" id="btn-back-survey" aria-label="Вернуться к выбору роли">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M10 3L5 8l5 5"/>
-        </svg>
-        Назад
-      </button>
-      <div class="survey-header-text">
-        <h2 id="survey-title">Спасибо, что вы с нами</h2>
-        <p id="survey-subtitle">Опрос полностью анонимный. Мы не собираем личных данных, только честные проблемы и предложения. Никаких &laquo;санкций&raquo; за критику быть не может&nbsp;&mdash; нам действительно важно знать правду.</p>
+      <div class="survey-header-inner">
+        <button class="btn-back" id="btn-back-survey" aria-label="Вернуться к выбору роли">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 3L5 8l5 5"/>
+          </svg>
+          Назад
+        </button>
+        <div class="survey-header-text">
+          <h2 id="survey-title">Спасибо, что вы с нами</h2>
+          <p id="survey-subtitle">Опрос полностью анонимный. Мы не собираем личных данных, только честные проблемы и предложения. Никаких &laquo;санкций&raquo; за критику быть не может&nbsp;&mdash; нам действительно важно знать правду.</p>
+        </div>
       </div>
     </div>
     <div class="survey-iframe-wrapper" id="survey-iframe-wrapper">
