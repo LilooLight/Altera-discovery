@@ -505,22 +505,25 @@
 
   <!-- Layer 2: Biomorph SVG shapes (animated by GSAP) -->
   <div class="biomorph-layer" aria-hidden="true">
-    <svg class="biomorph-shape" style="top:35%;left:35%;width:700px;height:700px;" viewBox="0 0 500 500">
-      <path d="M250,80 C320,50 430,110 440,210 C450,310 390,410 300,440 C210,470 110,420 70,330 C30,240 60,130 140,80 C180,55 220,90 250,80 Z" fill="rgba(76,210,197,1)"/>
+    <!-- 2x тиффани #C9A96E -->
+    <svg class="biomorph-shape" style="top:35%;left:35%;width:800px;height:800px;" viewBox="0 0 500 500">
+      <path d="M250,80 C320,50 430,110 440,210 C450,310 390,410 300,440 C210,470 110,420 70,330 C30,240 60,130 140,80 C180,55 220,90 250,80 Z" fill="rgba(201,169,110,1)"/>
     </svg>
-    <svg class="biomorph-shape" style="top:25%;left:55%;width:500px;height:500px;" viewBox="0 0 500 500">
-      <path d="M250,90 C320,60 410,110 430,200 C450,290 400,390 310,430 C220,470 130,440 80,370 C30,300 40,200 90,140 C140,80 190,110 250,90 Z" fill="rgba(76,210,197,1)"/>
+    <svg class="biomorph-shape" style="top:25%;left:55%;width:350px;height:350px;" viewBox="0 0 500 500">
+      <path d="M250,90 C320,60 410,110 430,200 C450,290 400,390 310,430 C220,470 130,440 80,370 C30,300 40,200 90,140 C140,80 190,110 250,90 Z" fill="rgba(201,169,110,1)"/>
     </svg>
-    <svg class="biomorph-shape" style="top:45%;left:15%;width:800px;height:800px;" viewBox="0 0 500 500">
-      <path d="M180,60 C270,30 390,60 440,160 C490,260 470,370 400,440 C330,510 200,500 120,430 C40,360 20,250 60,160 C90,90 120,70 180,60 Z" fill="rgba(76,210,197,1)"/>
+    <!-- 2x голубые #3B82F6 -->
+    <svg class="biomorph-shape" style="top:45%;left:15%;width:700px;height:700px;" viewBox="0 0 500 500">
+      <path d="M180,60 C270,30 390,60 440,160 C490,260 470,370 400,440 C330,510 200,500 120,430 C40,360 20,250 60,160 C90,90 120,70 180,60 Z" fill="rgba(59,130,246,1)"/>
     </svg>
-    <svg class="biomorph-shape" style="top:55%;left:55%;width:650px;height:650px;" viewBox="0 0 500 500">
-      <path d="M200,60 C290,30 400,80 440,180 C480,280 450,380 370,440 C290,500 170,480 100,410 C30,340 20,230 70,150 C110,80 150,80 200,60 Z" fill="rgba(255,255,255,1)"/>
+    <svg class="biomorph-shape" style="top:55%;left:55%;width:300px;height:300px;" viewBox="0 0 500 500">
+      <path d="M200,60 C290,30 400,80 440,180 C480,280 450,380 370,440 C290,500 170,480 100,410 C30,340 20,230 70,150 C110,80 150,80 200,60 Z" fill="rgba(59,130,246,1)"/>
     </svg>
+    <!-- 2x белые -->
     <svg class="biomorph-shape" style="top:40%;left:40%;width:500px;height:500px;" viewBox="0 0 500 500">
       <path d="M250,100 C330,60 430,130 440,230 C450,330 390,420 300,450 C210,480 110,440 60,360 C10,280 30,180 100,120 C160,70 200,110 250,100 Z" fill="rgba(255,255,255,1)"/>
     </svg>
-    <svg class="biomorph-shape" style="top:20%;left:25%;width:450px;height:450px;" viewBox="0 0 500 500">
+    <svg class="biomorph-shape" style="top:20%;left:25%;width:250px;height:250px;" viewBox="0 0 500 500">
       <path d="M250,70 C340,40 430,100 440,200 C450,300 400,400 310,440 C220,470 120,440 70,360 C20,280 40,170 110,110 C160,70 210,90 250,70 Z" fill="rgba(255,255,255,1)"/>
     </svg>
   </div>
@@ -600,8 +603,8 @@
         </div>
       </div>
 
-      <!-- 3. Постовая/палатная медсестра -->
-      <div class="role-card" tabindex="0" role="button" data-role="admin" aria-label="Постовая медсестра или медрегистратор">
+      <!-- 3. Палатная медсестра -->
+      <div class="role-card" tabindex="0" role="button" data-role="admin" aria-label="Палатная медсестра">
         <div class="icon icon-admin">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="5" y="3" width="14" height="18" rx="2"/>
@@ -612,7 +615,7 @@
           </svg>
         </div>
         <div>
-          <h3>Постовая/палатная медсестра или медрегистратор</h3>
+          <h3>Палатная медсестра</h3>
           <p>Вы формируете расписание, заселяете пациентов, передаёте назначения и контролируете выписку.</p>
         </div>
       </div>
@@ -720,8 +723,8 @@
       const FORM_URLS = {
         therapist:  'https://forms.yandex.ru/u/6a70550c9029020494f3f0f7',
         specialist: 'https://forms.yandex.ru/u/6a706fd9f47e73091708cc0a',
-        admin:      'https://forms.yandex.ru/u/6a707d04eb61460cf5f435fc',
-        nurse_proc: '', // TODO: add form URL
+        admin:      'https://forms.yandex.ru/u/6a71faf9d0468843f1a95970',
+        nurse_proc: 'https://forms.yandex.ru/u/6a707d04eb61460cf5f435fc',
         leader:     'https://forms.yandex.ru/u/6a707ff484227c0ad56e185a'
       };
 
