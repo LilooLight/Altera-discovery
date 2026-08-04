@@ -46,103 +46,40 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ===== DECORATIVE BACKGROUND ===== */
-    .bg-decoration {
+    /* ===== BACKGROUND LAYERS ===== */
+
+    /* Layer 1: Background Image */
+    .bg-image-layer {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      pointer-events: none;
       z-index: 0;
+      background-image: url('https://images.nightcafe.studio/jobs/bH1uQjDLpgJ2zx9tujeB/bH1uQjDLpgJ2zx9tujeB--0--_8gV8_6x-real-esrgan-x4-plus.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Layer 2: Biomorph shapes (GSAP animated) */
+    .biomorph-layer {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
+      pointer-events: none;
       overflow: hidden;
     }
 
-    .bg-blob {
+    .biomorph-shape {
       position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      will-change: transform;
+      will-change: transform, opacity;
     }
 
-    .bg-blob:nth-child(1) {
-      width: 500px; height: 500px;
-      background: rgba(62, 213, 187, 0.15);
-      top: -10%; right: -5%;
-      animation: drift1 9s ease-in-out infinite;
-    }
-
-    .bg-blob:nth-child(2) {
-      width: 400px; height: 400px;
-      background: rgba(62, 213, 187, 0.10);
-      bottom: -10%; left: -5%;
-      animation: drift2 11s ease-in-out infinite;
-    }
-
-    .bg-blob:nth-child(3) {
-      width: 300px; height: 300px;
-      background: rgba(62, 213, 187, 0.08);
-      top: 40%; left: 50%;
-      animation: drift3 6s ease-in-out infinite;
-    }
-
-    .bg-blob:nth-child(4) {
-      width: 600px; height: 600px;
-      background: rgba(62, 213, 187, 0.05);
-      top: 10%; left: 20%;
-      animation: drift4 12s ease-in-out infinite;
-    }
-
-    .bg-blob:nth-child(5) {
-      width: 250px; height: 250px;
-      background: rgba(62, 213, 187, 0.12);
-      bottom: 20%; right: 15%;
-      animation: drift5 7s ease-in-out infinite;
-    }
-
-    .bg-blob:nth-child(6) {
-      width: 350px; height: 350px;
-      background: rgba(62, 213, 187, 0.04);
-      top: 60%; right: 30%;
-      animation: drift6 10s ease-in-out infinite;
-    }
-
-    @keyframes drift1 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25%      { transform: translate(-60px, 40px) scale(1.05); }
-      50%      { transform: translate(30px, -30px) scale(0.95); }
-      75%      { transform: translate(-20px, -50px) scale(1.02); }
-    }
-
-    @keyframes drift2 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25%      { transform: translate(50px, -40px) scale(1.08); }
-      50%      { transform: translate(-30px, 60px) scale(0.96); }
-      75%      { transform: translate(40px, 20px) scale(1.03); }
-    }
-
-    @keyframes drift3 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33%      { transform: translate(-80px, -40px) scale(1.06); }
-      66%      { transform: translate(60px, 50px) scale(0.94); }
-    }
-
-    @keyframes drift4 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      20%      { transform: translate(40px, 30px) scale(1.04); }
-      40%      { transform: translate(-50px, -20px) scale(0.98); }
-      60%      { transform: translate(20px, -60px) scale(1.06); }
-      80%      { transform: translate(-30px, 40px) scale(0.97); }
-    }
-
-    @keyframes drift5 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      30%      { transform: translate(-40px, 50px) scale(1.07); }
-      60%      { transform: translate(50px, -30px) scale(0.95); }
-    }
-
-    @keyframes drift6 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25%      { transform: translate(30px, -50px) scale(1.03); }
-      50%      { transform: translate(-60px, 30px) scale(1.05); }
-      75%      { transform: translate(20px, 60px) scale(0.98); }
+    /* Layer 3: Noise overlay */
+    .noise-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.035;
     }
 
     /* ===== SCREEN 1 — WELCOME ===== */
@@ -153,7 +90,7 @@
       text-align: center;
       padding: 2rem;
       position: relative;
-      z-index: 1;
+      z-index: 3;
     }
 
     .welcome-logo {
@@ -197,24 +134,24 @@
       font-weight: 600;
       font-family: inherit;
       color: #fff;
-      background: linear-gradient(135deg, #3ED5BB 0%, #36C4AA 100%);
+      background: linear-gradient(135deg, #4CD2C5 0%, #3FBFAD 100%);
       border: none;
       border-radius: 12px;
       cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
-      box-shadow: 0 4px 16px rgba(62, 213, 187, 0.25);
+      box-shadow: 0 4px 16px rgba(76, 210, 197, 0.25);
       letter-spacing: 0.03em;
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(62, 213, 187, 0.35);
-      background: linear-gradient(135deg, #2FB099 0%, #2AA992 100%);
+      box-shadow: 0 6px 24px rgba(76, 210, 197, 0.35);
+      background: linear-gradient(135deg, #3DB8A7 0%, #36ADA0 100%);
     }
 
     .btn-primary:active {
       transform: translateY(0);
-      box-shadow: 0 2px 8px rgba(62, 213, 187, 0.2);
+      box-shadow: 0 2px 8px rgba(76, 210, 197, 0.2);
     }
 
     .btn-primary svg {
@@ -233,7 +170,7 @@
       justify-content: center;
       padding: 2rem;
       position: relative;
-      z-index: 1;
+      z-index: 3;
     }
 
     .roles-header {
@@ -280,7 +217,7 @@
 
     .role-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(62, 213, 187, 0.15);
+      box-shadow: 0 8px 30px rgba(76, 210, 197, 0.15);
       border-color: #a8ede0;
     }
 
@@ -364,7 +301,7 @@
     #screen-survey {
       flex-direction: column;
       position: relative;
-      z-index: 1;
+      z-index: 3;
       height: 100vh;
       overflow: hidden;
     }
@@ -428,7 +365,7 @@
       width: 100%;
       background: #fff;
       border-radius: 16px;
-      box-shadow: 0 4px 32px rgba(62, 213, 187, 0.10), 0 1px 4px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 4px 32px rgba(76, 210, 197, 0.10), 0 1px 4px rgba(0, 0, 0, 0.04);
       padding: 16px;
       display: flex;
       flex-direction: column;
@@ -521,35 +458,56 @@
       .role-card, .btn-primary, .btn-back {
         transition: none;
       }
-      .bg-blob {
-        animation: none !important;
+      .biomorph-shape {
+        opacity: 0 !important;
       }
     }
 
     *:focus-visible {
-      outline: 2px solid #3ED5BB;
+      outline: 2px solid #4CD2C5;
       outline-offset: 2px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Animated background blobs -->
-  <div class="bg-decoration" aria-hidden="true">
-    <div class="bg-blob"></div>
-    <div class="bg-blob"></div>
-    <div class="bg-blob"></div>
-    <div class="bg-blob"></div>
-    <div class="bg-blob"></div>
-    <div class="bg-blob"></div>
+  <!-- Layer 1: Background Image -->
+  <div class="bg-image-layer" aria-hidden="true"></div>
+
+  <!-- Layer 2: Biomorph SVG shapes (animated by GSAP) -->
+  <div class="biomorph-layer" aria-hidden="true">
+    <svg class="biomorph-shape" style="top:-8%;right:-6%;width:650px;height:650px;" viewBox="0 0 500 500">
+      <path d="M250,80 C320,50 430,110 440,210 C450,310 390,410 300,440 C210,470 110,420 70,330 C30,240 60,130 140,80 C180,55 220,90 250,80 Z" fill="rgba(76,210,197,0.12)"/>
+    </svg>
+    <svg class="biomorph-shape" style="bottom:-12%;left:-6%;width:550px;height:550px;" viewBox="0 0 500 500">
+      <path d="M200,60 C290,30 400,80 440,180 C480,280 450,380 370,440 C290,500 170,480 100,410 C30,340 20,230 70,150 C110,80 150,80 200,60 Z" fill="rgba(201,169,110,0.10)"/>
+    </svg>
+    <svg class="biomorph-shape" style="top:30%;left:35%;width:420px;height:420px;" viewBox="0 0 500 500">
+      <path d="M250,90 C320,60 410,110 430,200 C450,290 400,390 310,430 C220,470 130,440 80,370 C30,300 40,200 90,140 C140,80 190,110 250,90 Z" fill="rgba(76,210,197,0.08)"/>
+    </svg>
+    <svg class="biomorph-shape" style="top:5%;left:10%;width:750px;height:750px;" viewBox="0 0 500 500">
+      <path d="M180,60 C270,30 390,60 440,160 C490,260 470,370 400,440 C330,510 200,500 120,430 C40,360 20,250 60,160 C90,90 120,70 180,60 Z" fill="rgba(76,210,197,0.05)"/>
+    </svg>
+    <svg class="biomorph-shape" style="bottom:10%;right:5%;width:380px;height:380px;" viewBox="0 0 500 500">
+      <path d="M250,100 C330,60 430,130 440,230 C450,330 390,420 300,450 C210,480 110,440 60,360 C10,280 30,180 100,120 C160,70 200,110 250,100 Z" fill="rgba(201,169,110,0.08)"/>
+    </svg>
   </div>
+
+  <!-- Layer 3: Noise texture overlay -->
+  <svg class="noise-overlay" aria-hidden="true">
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#noiseFilter)"/>
+  </svg>
 
   <!-- ===================== SCREEN 1 — WELCOME ===================== -->
   <div id="screen-welcome" class="screen active" role="main">
     <!-- Medical cross logo -->
     <svg class="welcome-logo" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <rect width="72" height="72" rx="18" fill="#e0faf5"/>
-      <path d="M42 20H30v10H20v12h10v10h12V42h10V30H42V20z" fill="#3ED5BB" opacity="0.85"/>
+      <path d="M42 20H30v10H20v12h10v10h12V42h10V30H42V20z" fill="#4CD2C5" opacity="0.85"/>
     </svg>
 
     <h1 class="welcome-title">Коллеги, нам очень нужна<br>ваша помощь</h1>
@@ -672,8 +630,47 @@
     </div>
   </div>
 
+  <!-- GSAP for biomorph animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
   <!-- Yandex Forms embed script -->
   <script src="https://forms.yandex.ru/_static/embed.js"></script>
+
+  <!-- ===================== BIOMORPH ANIMATIONS ===================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Respect reduced-motion preference
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var shapes = document.querySelectorAll('.biomorph-shape');
+      if (!shapes.length) return;
+
+      // Each shape gets unique organic movement
+      var configs = [
+        { x: -45, y: 35,  scale: 1.04, rotation: 8,   duration: 9,  ease: 'sine.inOut' },
+        { x:  55, y: -40, scale: 1.05, rotation: -7,  duration: 11, ease: 'sine.inOut' },
+        { x: -35, y: -45, scale: 0.96, rotation: 10,  duration: 7,  ease: 'sine.inOut' },
+        { x:  40, y:  30, scale: 1.03, rotation: -5,  duration: 12, ease: 'sine.inOut' },
+        { x: -30, y:  50, scale: 0.97, rotation: 7,   duration: 8,  ease: 'sine.inOut' }
+      ];
+
+      shapes.forEach(function (shape, i) {
+        var c = configs[i] || configs[0];
+        gsap.to(shape, {
+          x: c.x,
+          y: c.y,
+          scale: c.scale,
+          rotation: c.rotation,
+          duration: c.duration,
+          ease: c.ease,
+          repeat: -1,
+          yoyo: true
+        });
+      });
+    })();
+  </script>
 
   <!-- ===================== JAVASCRIPT ===================== -->
   <script>
