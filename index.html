@@ -93,9 +93,25 @@
       z-index: 3;
     }
 
+    .welcome-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-radius: 24px;
+      box-shadow: 0 8px 48px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.03);
+      padding: 3rem 2.5rem 2.5rem;
+      max-width: 520px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
     .welcome-logo {
-      width: 72px; height: 72px;
-      margin-bottom: 2rem;
+      width: 64px; height: 64px;
+      margin-bottom: 1.5rem;
       opacity: 0.9;
     }
 
@@ -381,6 +397,11 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 640px) {
+      .welcome-card {
+        padding: 2rem 1.5rem 1.75rem;
+        border-radius: 20px;
+      }
+
       .roles-grid {
         grid-template-columns: 1fr;
         max-width: 360px;
@@ -504,26 +525,28 @@
 
   <!-- ===================== SCREEN 1 — WELCOME ===================== -->
   <div id="screen-welcome" class="screen active" role="main">
-    <!-- Medical cross logo -->
-    <svg class="welcome-logo" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <rect width="72" height="72" rx="18" fill="#e0faf5"/>
-      <path d="M42 20H30v10H20v12h10v10h12V42h10V30H42V20z" fill="#4CD2C5" opacity="0.85"/>
-    </svg>
-
-    <h1 class="welcome-title">Коллеги, нам очень нужна<br>ваша помощь</h1>
-
-    <div class="welcome-text">
-      <p>Мы создаём новую систему взамен устаревшей&nbsp;&mdash; понятную, логичную и действительно помогающую в&nbsp;работе.</p>
-      <p>Чтобы она стала такой, нам необходим ваш бесценный опыт.</p>
-      <p>Это займёт 3&ndash;4 минуты.</p>
-    </div>
-
-    <button class="btn-primary" id="btn-start" aria-label="Выбрать роль и начать">
-      ВЫБРАТЬ РОЛЬ И НАЧАТЬ
-      <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+    <div class="welcome-card">
+      <!-- Logo (placeholder — will be replaced) -->
+      <svg class="welcome-logo" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="72" height="72" rx="18" fill="#e0faf5"/>
+        <path d="M42 20H30v10H20v12h10v10h12V42h10V30H42V20z" fill="#4CD2C5" opacity="0.85"/>
       </svg>
-    </button>
+
+      <h1 class="welcome-title">Коллеги, нам очень нужна<br>ваша помощь</h1>
+
+      <div class="welcome-text">
+        <p>Мы создаём новую систему взамен устаревшей&nbsp;&mdash; понятную, логичную и действительно помогающую в&nbsp;работе.</p>
+        <p>Чтобы она стала такой, нам необходим ваш бесценный опыт.</p>
+        <p>Это займёт 3&ndash;4 минуты.</p>
+      </div>
+
+      <button class="btn-primary" id="btn-start" aria-label="Выбрать роль и начать">
+        ВЫБРАТЬ РОЛЬ И НАЧАТЬ
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+    </div>
   </div>
 
   <!-- ===================== SCREEN 2 — ROLE SELECTION ===================== -->
@@ -649,11 +672,11 @@
 
       // Each shape gets unique organic movement
       var configs = [
-        { x: -45, y: 35,  scale: 1.04, rotation: 8,   duration: 9,  ease: 'sine.inOut' },
-        { x:  55, y: -40, scale: 1.05, rotation: -7,  duration: 11, ease: 'sine.inOut' },
-        { x: -35, y: -45, scale: 0.96, rotation: 10,  duration: 7,  ease: 'sine.inOut' },
-        { x:  40, y:  30, scale: 1.03, rotation: -5,  duration: 12, ease: 'sine.inOut' },
-        { x: -30, y:  50, scale: 0.97, rotation: 7,   duration: 8,  ease: 'sine.inOut' }
+        { x: -45, y: 35,  scale: 1.05, rotation: 10,  duration: 5,  ease: 'sine.inOut' },
+        { x:  55, y: -40, scale: 1.06, rotation: -9,  duration: 6,  ease: 'sine.inOut' },
+        { x: -35, y: -45, scale: 0.95, rotation: 12,  duration: 4,  ease: 'sine.inOut' },
+        { x:  40, y:  30, scale: 1.04, rotation: -7,  duration: 7,  ease: 'sine.inOut' },
+        { x: -30, y:  50, scale: 0.96, rotation: 9,   duration: 5,  ease: 'sine.inOut' }
       ];
 
       shapes.forEach(function (shape, i) {
