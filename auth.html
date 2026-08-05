@@ -6,7 +6,7 @@
   <title>Альтера — Вход в систему</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -19,7 +19,7 @@
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: #fff;
-      color: #2d3748;
+      color: rgba(75, 85, 99, 1);
       min-height: 100vh;
       overflow: hidden;
       -webkit-font-smoothing: antialiased;
@@ -73,9 +73,11 @@
 
     /* ===== AUTH CARD ===== */
     .auth-card {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.5);
       border-radius: 20px;
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08), 0 16px 64px rgba(48, 66, 65, 0.2);
+      backdrop-filter: blur(16.67px);
+      -webkit-backdrop-filter: blur(16.67px);
       display: flex;
       width: 100%;
       max-width: 1224px;
@@ -88,7 +90,7 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      padding: 64px 56px 56px 56px;
+      padding: 64px 56px;
       position: relative;
     }
 
@@ -107,21 +109,22 @@
 
     .brand-name {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 72px;
+      font-size: 76px;
       font-weight: 700;
-      color: #1e293b;
-      letter-spacing: -0.02em;
+      color: rgba(75, 85, 99, 1);
+      letter-spacing: -0.04em;
       line-height: 1;
     }
 
     .brand-subtitle {
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
+      font-weight: 600;
       font-size: 22px;
-      font-weight: 400;
-      color: #94a3b8;
+      color: rgba(75, 85, 99, 1);
+      letter-spacing: -1px;
       margin-top: 0.5rem;
-      line-height: 1.45;
+      line-height: 24px;
     }
 
     /* ===== MIDDLE: Login form (appears after splash) ===== */
@@ -158,7 +161,7 @@
     .form-group label {
       font-size: 0.82rem;
       font-weight: 600;
-      color: #475569;
+      color: rgba(75, 85, 99, 1);
     }
 
     .form-group input {
@@ -168,7 +171,7 @@
       border: 1.5px solid #e2e8f0;
       border-radius: 8px;
       background: #fff;
-      color: #2d3748;
+      color: rgba(75, 85, 99, 1);
       outline: none;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
@@ -177,7 +180,7 @@
 
     .form-group input:focus {
       border-color: #5ECEC1;
-      box-shadow: 0 0 0 3px rgba(94, 206, 193, 0.12);
+      box-shadow: 0 0 0 3px rgba(94, 206, 193, 0.15);
     }
 
     .btn-login {
@@ -216,23 +219,29 @@
     }
 
     .footer-org {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: #64748b;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(75, 85, 99, 1);
+      letter-spacing: 0.005em;
+      line-height: 16px;
       margin-bottom: 0.6rem;
     }
 
     .footer-legal {
-      font-size: 0.75rem;
-      color: #94a3b8;
-      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(156, 163, 175, 1);
+      letter-spacing: -0.02em;
+      line-height: 16px;
       margin-bottom: 0.75rem;
     }
 
     .footer-legal a {
-      color: #3b82f6;
-      text-decoration: none;
-    }
+      color: rgba(59, 130, 246, 1);
+      text-decoration: underline;
+      }
     .footer-legal a:hover { text-decoration: underline; }
 
     /* Progress line (text + bar) */
@@ -240,9 +249,9 @@
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 8px;
       transition: opacity 0.4s ease, max-height 0.6s ease 0.2s;
-      max-height: 60px;
+      max-height: 80px;
       overflow: hidden;
     }
 
@@ -251,29 +260,61 @@
       max-height: 0;
     }
 
-    .progress-text {
-      font-size: 0.78rem;
-      color: #94a3b8;
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0;
     }
-    .progress-text strong {
-      color: #64748b;
-      font-weight: 500;
+
+    .progress-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(75, 85, 99, 1);
+      letter-spacing: -0.02em;
+      line-height: 16px;
+      white-space: nowrap;
+    }
+
+    .progress-status {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(156, 163, 175, 1);
+      letter-spacing: -0.02em;
+      line-height: 16px;
+    }
+
+    .progress-bar-track {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .progress-bar {
-      width: 100%;
-      height: 3px;
-      background: #e2e8f0;
-      border-radius: 2px;
+      flex: 1;
+      height: 8px;
+      background: rgba(0, 6, 16, 0.06);
+      border-radius: 100px;
       overflow: hidden;
     }
 
     .progress-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, #5ECEC1, #47DCFF);
-      border-radius: 2px;
+      background: linear-gradient(90deg, #5ECEC1, #3BEFF6);
+      border-radius: 100px;
       transition: width 0.3s ease;
+    }
+
+    .progress-percent {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(0, 6, 16, 0.85);
+      line-height: 22px;
+      white-space: nowrap;
     }
 
     /* ===== RIGHT PANEL (Photo) ===== */
@@ -392,9 +433,15 @@
 
         <!-- Progress (separate from footer, collapses after boot) -->
         <div class="progress-line" id="progressLine">
-          <div class="progress-text"><strong>Загрузка:</strong> <span id="progressStatus">Выполняется интеграция с CRM...</span></div>
-          <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
+          <div class="progress-row">
+            <span class="progress-label">Загрузка:</span>
+            <span class="progress-status" id="progressStatus">Выполняется интеграция с CRM...</span>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-percent" id="progressPercent">0%</span>
           </div>
         </div>
 
@@ -435,6 +482,7 @@
       // ===== BOOT SEQUENCE =====
       var progressFill   = document.getElementById('progressFill');
       var progressStatus = document.getElementById('progressStatus');
+      var progressPercent = document.getElementById('progressPercent');
       var progressLine   = document.getElementById('progressLine');
       var loginForm      = document.getElementById('loginForm');
       var brandLogo      = document.getElementById('brandLogo');
@@ -461,6 +509,7 @@
 
         // Reset UI
         progressFill.style.width = '0%';
+        progressPercent.textContent = '0%';
         progressStatus.textContent = statusMessages[0];
         progressLine.classList.remove('hiding');
         loginForm.classList.remove('visible');
@@ -484,7 +533,9 @@
         var elapsed = timestamp - startTime;
         var raw = Math.min(elapsed / progressDuration, 1);
         var progress = 1 - Math.pow(1 - raw, 3);
-        progressFill.style.width = Math.round(progress * 100) + '%';
+        var pct = Math.round(progress * 100);
+        progressFill.style.width = pct + '%';
+        progressPercent.textContent = pct + '%';
 
         if (raw < 1) {
           animFrame = requestAnimationFrame(animateProgress);
