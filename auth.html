@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Altera — Вход в систему</title>
+  <title>Альтера — Вход в систему</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,9 +14,7 @@
       box-sizing: border-box;
     }
 
-    html {
-      font-size: 16px;
-    }
+    html { font-size: 16px; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -76,14 +74,13 @@
     /* ===== AUTH CARD ===== */
     .auth-card {
       background: #fff;
-      border-radius: 24px;
+      border-radius: 20px;
       box-shadow: 0 25px 80px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.06);
       display: flex;
       width: 100%;
-      max-width: 920px;
-      min-height: 520px;
+      max-width: 960px;
+      height: 560px;
       overflow: hidden;
-      position: relative;
     }
 
     /* ===== LEFT PANEL ===== */
@@ -91,11 +88,178 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 3rem 2.5rem;
+      padding: 2.5rem 3rem;
       position: relative;
+    }
+
+    /* ===== TOP: Brand block (always visible, left-aligned) ===== */
+    .brand-block {
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+    }
+
+    .brand-name {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1e293b;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .brand-subtitle {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      margin-top: 0.3rem;
+      line-height: 1.4;
+    }
+
+    /* ===== MIDDLE: Login form (appears after splash) ===== */
+    .middle-area {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      padding-top: 2rem;
+    }
+
+    .login-form {
+      width: 82%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+    }
+
+    .login-form.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    .form-group input {
+      padding: 0.7rem 0.9rem;
+      font-size: 0.9rem;
+      font-family: inherit;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      background: #fff;
+      color: #2d3748;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-group input::placeholder { color: #cbd5e1; }
+
+    .form-group input:focus {
+      border-color: #5ECEC1;
+      box-shadow: 0 0 0 3px rgba(94, 206, 193, 0.12);
+    }
+
+    .btn-login {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.8rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: inherit;
+      color: #fff;
+      background: linear-gradient(135deg, #5ECEC1 0%, #0CAE9B 100%);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 3px 12px rgba(94, 206, 193, 0.3);
+      margin-top: 0.5rem;
+      align-self: flex-start;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 20px rgba(94, 206, 193, 0.4);
+    }
+    .btn-login:active { transform: translateY(0); }
+
+    /* ===== BOTTOM: Footer (always pinned to bottom) ===== */
+    .auth-footer {
+      flex-shrink: 0;
+      padding-top: 1rem;
+    }
+
+    .footer-org {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #64748b;
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-legal {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-legal a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+    .footer-legal a:hover { text-decoration: underline; }
+
+    /* Progress line (text + bar) */
+    .progress-line {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      transition: opacity 0.4s ease;
+    }
+
+    .progress-line.hiding {
+      opacity: 0;
+    }
+
+    .progress-text {
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+    .progress-text strong {
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 3px;
+      background: #e2e8f0;
+      border-radius: 2px;
       overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #5ECEC1, #47DCFF);
+      border-radius: 2px;
+      transition: width 0.3s ease;
     }
 
     /* ===== RIGHT PANEL (Photo) ===== */
@@ -111,230 +275,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(94,206,193,0.15) 0%, rgba(71,220,255,0.10) 100%);
-    }
-
-    /* ===== SPLASH STATE ===== */
-    .splash-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      width: 100%;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .splash-content.hiding {
-      opacity: 0;
-      transform: translateY(-20px);
-      pointer-events: none;
-      position: absolute;
-    }
-
-    .auth-logo {
-      width: 56px;
-      height: 56px;
-      margin-bottom: 1.75rem;
-    }
-
-    .auth-system-name {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #1a365d;
-      margin-bottom: 0.25rem;
-      letter-spacing: -0.01em;
-    }
-
-    .auth-system-subtitle {
-      font-size: 0.9rem;
-      color: #718096;
-      margin-bottom: 2.5rem;
-    }
-
-    /* Version info block */
-    .splash-info {
-      width: 100%;
-      text-align: left;
-      background: #f8fafb;
-      border-radius: 12px;
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.75rem;
-      font-size: 0.82rem;
-      color: #718096;
-      line-height: 1.8;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .splash-info .info-row {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .splash-info .info-label {
-      color: #a0aec0;
-    }
-
-    .splash-info .info-value {
-      color: #4a5568;
-      font-weight: 500;
-    }
-
-    /* Progress bar */
-    .progress-wrapper {
-      width: 100%;
-    }
-
-    .progress-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.78rem;
-      color: #a0aec0;
-      margin-bottom: 0.5rem;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 4px;
-      background: #e2e8f0;
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #5ECEC1, #47DCFF);
-      border-radius: 2px;
-      transition: width 0.3s ease;
-    }
-
-    /* ===== LOGIN STATE ===== */
-    .login-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
-      pointer-events: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) translateY(20px);
-    }
-
-    .login-content.visible {
-      opacity: 1;
-      transform: translate(-50%, -50%) translateY(0);
-      pointer-events: auto;
-      position: relative;
-      top: auto;
-      left: auto;
-    }
-
-    .login-logo {
-      width: 44px;
-      height: 44px;
-      margin-bottom: 1.25rem;
-    }
-
-    .login-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #1a365d;
-      margin-bottom: 1.75rem;
-    }
-
-    .login-form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-    }
-
-    .form-group label {
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: #718096;
-      padding-left: 0.15rem;
-    }
-
-    .form-group input {
-      padding: 0.75rem 1rem;
-      font-size: 0.95rem;
-      font-family: inherit;
-      border: 1.5px solid #e2e8f0;
-      border-radius: 10px;
-      background: #f8fafb;
-      color: #2d3748;
-      outline: none;
-      transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .form-group input::placeholder {
-      color: #a0aec0;
-    }
-
-    .form-group input:focus {
-      border-color: #5ECEC1;
-      background: #fff;
-      box-shadow: 0 0 0 3px rgba(94, 206, 193, 0.12);
-    }
-
-    .btn-login {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.85rem 2rem;
-      font-size: 1rem;
-      font-weight: 600;
-      font-family: inherit;
-      color: #fff;
-      background: linear-gradient(135deg, #5ECEC1 0%, #0CAE9B 100%);
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 4px 16px rgba(94, 206, 193, 0.3);
-      margin-top: 0.5rem;
-      letter-spacing: 0.02em;
-    }
-
-    .btn-login:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 24px rgba(94, 206, 193, 0.4);
-    }
-
-    .btn-login:active {
-      transform: translateY(0);
-    }
-
-    /* Footer info (slides down after splash) */
-    .auth-footer {
-      margin-top: auto;
-      padding-top: 1.5rem;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.5s ease 0.4s, transform 0.5s ease 0.4s;
-    }
-
-    .auth-footer.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .auth-footer p {
-      font-size: 0.72rem;
-      color: #a0aec0;
-      line-height: 1.6;
+      background: linear-gradient(135deg, rgba(94,206,193,0.12) 0%, rgba(71,220,255,0.08) 100%);
     }
 
     /* ===== RESPONSIVE ===== */
@@ -342,40 +283,24 @@
       .auth-card {
         flex-direction: column;
         max-width: 440px;
-        min-height: auto;
+        height: auto;
+        min-height: 600px;
       }
-
       .auth-right {
-        min-height: 180px;
+        min-height: 160px;
         order: -1;
       }
-
       .auth-left {
         padding: 2rem 1.75rem;
-        min-height: 400px;
-        justify-content: flex-start;
-        padding-top: 2.5rem;
+        min-height: 440px;
       }
-    }
-
-    @media (max-width: 400px) {
-      .auth-container {
-        padding: 1rem;
-      }
-
-      .auth-left {
-        padding: 1.5rem 1.25rem;
-      }
+      .login-form { width: 100%; }
     }
 
     /* ===== ACCESSIBILITY ===== */
     @media (prefers-reduced-motion: reduce) {
-      .splash-content, .login-content, .auth-footer {
-        transition: none;
-      }
-      .biomorph-shape {
-        opacity: 0 !important;
-      }
+      .login-form, .progress-line { transition: none; }
+      .biomorph-shape { opacity: 0 !important; }
     }
 
     *:focus-visible {
@@ -386,9 +311,8 @@
 </head>
 <body>
 
-  <!-- Background layers (same as survey) -->
+  <!-- Background layers -->
   <div class="bg-image-layer" aria-hidden="true"></div>
-
   <div class="biomorph-layer" aria-hidden="true">
     <svg class="biomorph-shape" style="top:45%;left:15%;width:560px;height:560px;filter:blur(300px);" viewBox="0 0 500 500">
       <path d="M180,60 C270,30 390,60 440,160 C490,260 470,370 400,440 C330,510 200,500 120,430 C40,360 20,250 60,160 C90,90 120,70 180,60 Z" fill="rgba(71,220,255,1)"/>
@@ -409,7 +333,6 @@
       <path d="M250,90 C320,60 410,110 430,200 C450,290 400,390 310,430 C220,470 130,440 80,370 C30,300 40,200 90,140 C140,80 190,110 250,90 Z" fill="rgba(94,206,193,1)"/>
     </svg>
   </div>
-
   <svg class="noise-overlay" aria-hidden="true">
     <filter id="noiseFilter">
       <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
@@ -421,63 +344,50 @@
   <!-- ===== AUTH CARD ===== -->
   <div class="auth-container">
     <div class="auth-card">
-      <!-- Left: Splash / Login -->
       <div class="auth-left">
 
-        <!-- SPLASH STATE -->
-        <div class="splash-content" id="splashContent">
-          <svg class="auth-logo" viewBox="0 0 48.15 47.91" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- TOP: Brand (always visible) -->
+        <div class="brand-block">
+          <svg class="brand-logo" viewBox="0 0 48.15 47.91" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <rect width="48.15" height="47.91" rx="8" fill="#5ECEC1" fill-opacity="0.25"/>
             <path d="M37.3219 32.9064C39.0177 30.3684 40.1512 27.2796 40.1512 24C40.1512 15.1635 32.9754 8 24.1236 8C21.6899 8 18.6767 8.97699 16.6107 9.9458C20.1418 10.7242 28.7733 11.5025 35.4431 18.8965C37.1182 20.7536 37.467 22.399 37.467 24.7339C37.467 24.7339 36.9189 23.7537 34.2661 21.2315C25.2422 14.6158 20.9265 14.2266 13.3814 12.1254C12.4263 12.987 11.5756 13.9618 10.8506 15.0286C10.8432 15.0181 10.8361 15.0085 10.8293 15C9.13351 17.538 8 20.6268 8 23.9064C8 32.743 15.1758 39.9064 24.0276 39.9064C26.4613 39.9064 29.4745 38.9294 31.5404 37.9606C28.0094 37.1823 19.3779 36.4039 12.7081 29.0099C11.033 27.1528 10.6842 25.5074 10.6842 23.1724C10.6842 23.1724 11.2323 24.1527 13.8851 26.6749C22.9089 33.2906 27.2247 33.6798 34.7698 35.781C35.7249 34.9194 36.5756 33.9446 37.3006 32.8777C37.308 32.8883 37.3151 32.8979 37.3219 32.9064ZM36.9532 31.8352C16.0616 26.8914 11.7268 18.8346 11.198 16.0712C32.0895 21.015 36.4243 29.0719 36.9532 31.8352Z" fill="#0CAE9B" fill-rule="evenodd"/>
           </svg>
+          <div class="brand-name">Альтера</div>
+          <div class="brand-subtitle">Медицинская информационная система</div>
+        </div>
 
-          <div class="auth-system-name">Altera</div>
-          <div class="auth-system-subtitle">Медицинская информационная система</div>
+        <!-- MIDDLE: Login form (hidden until boot completes) -->
+        <div class="middle-area">
+          <form class="login-form" id="loginForm" onsubmit="return false;">
+            <div class="form-group">
+              <label for="login">Имя пользователя или электронная почта</label>
+              <input type="text" id="login" placeholder="e-mail" autocomplete="username">
+            </div>
+            <div class="form-group">
+              <label for="password">Пароль</label>
+              <input type="password" id="password" autocomplete="current-password">
+            </div>
+            <button type="submit" class="btn-login">Войти</button>
+          </form>
+        </div>
 
-          <div class="splash-info" id="splashInfo">
-            <div class="info-row"><span class="info-label">Версия</span><span class="info-value" id="infoVersion">—</span></div>
-            <div class="info-row"><span class="info-label">Сборка</span><span class="info-value" id="infoBuild">—</span></div>
-            <div class="info-row"><span class="info-label">Среда</span><span class="info-value" id="infoEnv">—</span></div>
-            <div class="info-row"><span class="info-label">Организация</span><span class="info-value" id="infoOrg">—</span></div>
+        <!-- BOTTOM: Footer (always visible) -->
+        <div class="auth-footer">
+          <div class="footer-org">ДРПО ГлавНИЦ</div>
+          <div class="footer-legal">
+            &copy; 1985&ndash;2026 Альтера. Товарный знак зарегистрирован. ИНН 12345678909.<br>
+            <a href="#">Свидетельство о регистрации</a> &middot; <a href="#">Информация о лицензии</a>
           </div>
 
-          <div class="progress-wrapper">
-            <div class="progress-label">
-              <span>Инициализация</span>
-              <span id="progressPercent">0%</span>
-            </div>
+          <!-- Progress (visible during splash, fades out) -->
+          <div class="progress-line" id="progressLine">
+            <div class="progress-text"><strong>Загрузка:</strong> <span id="progressStatus">Выполняется интеграция с CRM...</span></div>
             <div class="progress-bar">
               <div class="progress-fill" id="progressFill"></div>
             </div>
           </div>
         </div>
 
-        <!-- LOGIN STATE -->
-        <div class="login-content" id="loginContent">
-          <svg class="login-logo" viewBox="0 0 48.15 47.91" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="48.15" height="47.91" rx="8" fill="#5ECEC1" fill-opacity="0.25"/>
-            <path d="M37.3219 32.9064C39.0177 30.3684 40.1512 27.2796 40.1512 24C40.1512 15.1635 32.9754 8 24.1236 8C21.6899 8 18.6767 8.97699 16.6107 9.9458C20.1418 10.7242 28.7733 11.5025 35.4431 18.8965C37.1182 20.7536 37.467 22.399 37.467 24.7339C37.467 24.7339 36.9189 23.7537 34.2661 21.2315C25.2422 14.6158 20.9265 14.2266 13.3814 12.1254C12.4263 12.987 11.5756 13.9618 10.8506 15.0286C10.8432 15.0181 10.8361 15.0085 10.8293 15C9.13351 17.538 8 20.6268 8 23.9064C8 32.743 15.1758 39.9064 24.0276 39.9064C26.4613 39.9064 29.4745 38.9294 31.5404 37.9606C28.0094 37.1823 19.3779 36.4039 12.7081 29.0099C11.033 27.1528 10.6842 25.5074 10.6842 23.1724C10.6842 23.1724 11.2323 24.1527 13.8851 26.6749C22.9089 33.2906 27.2247 33.6798 34.7698 35.781C35.7249 34.9194 36.5756 33.9446 37.3006 32.8777C37.308 32.8883 37.3151 32.8979 37.3219 32.9064ZM36.9532 31.8352C16.0616 26.8914 11.7268 18.8346 11.198 16.0712C32.0895 21.015 36.4243 29.0719 36.9532 31.8352Z" fill="#0CAE9B" fill-rule="evenodd"/>
-          </svg>
-
-          <div class="login-title">Вход в систему</div>
-
-          <form class="login-form" onsubmit="return false;">
-            <div class="form-group">
-              <label for="login">Логин</label>
-              <input type="text" id="login" placeholder="Введите логин" autocomplete="username">
-            </div>
-            <div class="form-group">
-              <label for="password">Пароль</label>
-              <input type="password" id="password" placeholder="Введите пароль" autocomplete="current-password">
-            </div>
-            <button type="submit" class="btn-login">Войти</button>
-          </form>
-        </div>
-
-        <!-- Footer with version (appears after transition) -->
-        <div class="auth-footer" id="authFooter">
-          <p>Altera v2.4.1 &middot; &copy; 2025</p>
-        </div>
       </div>
 
       <!-- Right: Photo -->
@@ -503,7 +413,6 @@
           [{x: 400, y: 250, d: 6}, {x: -300, y: 350, d: 5}, {x: -400, y: -250, d: 4}, {x: 300, y: -350, d: 7}, {x: 0, y: 0, d: 5}],
           [{x: 450, y: -300, d: 5}, {x: -200, y: -400, d: 4}, {x: -500, y: 300, d: 6}, {x: 350, y: 200, d: 5}, {x: 0, y: 0, d: 4}]
         ];
-
         shapes.forEach(function (shape, i) {
           var path = paths[i % paths.length];
           var tl = gsap.timeline({repeat: -1});
@@ -513,79 +422,59 @@
         });
       }
 
-      // ===== SIMULATED BOOT SEQUENCE =====
-      var bootSteps = [
-        { label: 'Версия',   value: '2.4.1',    delay: 400 },
-        { label: 'Сборка',   value: '#20250805', delay: 900 },
-        { label: 'Среда',    value: 'Production', delay: 1500 },
-        { label: 'Организация', value: 'Санаторий «Рассвет»', delay: 2200 }
+      // ===== BOOT SEQUENCE =====
+      var progressFill   = document.getElementById('progressFill');
+      var progressStatus = document.getElementById('progressStatus');
+      var progressLine   = document.getElementById('progressLine');
+      var loginForm      = document.getElementById('loginForm');
+
+      var statusMessages = [
+        'Выполняется интеграция с CRM...',
+        'Загрузка модуля расписания...',
+        'Синхронизация справочников...',
+        'Проверка лицензии...',
+        'Инициализация интерфейса...'
       ];
 
-      var progressFill    = document.getElementById('progressFill');
-      var progressPercent = document.getElementById('progressPercent');
-      var splashContent   = document.getElementById('splashContent');
-      var loginContent    = document.getElementById('loginContent');
-      var authFooter      = document.getElementById('authFooter');
+      var msgIndex = 0;
+      var msgInterval = setInterval(function () {
+        msgIndex++;
+        if (msgIndex < statusMessages.length) {
+          progressStatus.textContent = statusMessages[msgIndex];
+        }
+      }, 800);
 
-      // Populate info fields one by one
-      bootSteps.forEach(function (step) {
-        setTimeout(function () {
-          var el = document.getElementById({
-            'Версия': 'infoVersion',
-            'Сборка': 'infoBuild',
-            'Среда': 'infoEnv',
-            'Организация': 'infoOrg'
-          }[step.label]);
-          if (el) {
-            el.textContent = step.value;
-            el.style.opacity = '0';
-            el.style.transform = 'translateX(8px)';
-            el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-            requestAnimationFrame(function () {
-              el.style.opacity = '1';
-              el.style.transform = 'translateX(0)';
-            });
-          }
-        }, step.delay);
-      });
-
-      // Animate progress bar
-      var progressDuration = 3500; // total ms
+      // Animate progress bar (4 seconds total)
+      var progressDuration = 4000;
       var startTime = null;
 
       function animateProgress(timestamp) {
         if (!startTime) startTime = timestamp;
         var elapsed = timestamp - startTime;
         var raw = Math.min(elapsed / progressDuration, 1);
-        // Ease-out curve
         var progress = 1 - Math.pow(1 - raw, 3);
-        var pct = Math.round(progress * 100);
-
-        progressFill.style.width = pct + '%';
-        progressPercent.textContent = pct + '%';
+        progressFill.style.width = Math.round(progress * 100) + '%';
 
         if (raw < 1) {
           requestAnimationFrame(animateProgress);
         } else {
-          // Boot complete — transition to login
-          setTimeout(transitionToLogin, 300);
+          clearInterval(msgInterval);
+          transitionToLogin();
         }
       }
 
-      // Start progress after a short pause
       setTimeout(function () {
         requestAnimationFrame(animateProgress);
-      }, 600);
+      }, 400);
 
       function transitionToLogin() {
-        // Hide splash
-        splashContent.classList.add('hiding');
+        // Fade out progress line
+        progressLine.classList.add('hiding');
 
         // Show login form
         setTimeout(function () {
-          loginContent.classList.add('visible');
-          authFooter.classList.add('visible');
-        }, 300);
+          loginForm.classList.add('visible');
+        }, 400);
       }
 
     })();
