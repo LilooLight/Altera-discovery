@@ -78,8 +78,8 @@
       box-shadow: 0 25px 80px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.06);
       display: flex;
       width: 100%;
-      max-width: 960px;
-      height: 760px;
+      max-width: 1224px;
+      height: 814px;
       overflow: hidden;
     }
 
@@ -88,7 +88,7 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      padding: 3rem 3rem 0 3rem;
+      padding: 64px 56px 56px 56px;
       position: relative;
     }
 
@@ -125,7 +125,7 @@
       flex: 1;
       display: flex;
       align-items: flex-start;
-      padding-top: 3.5rem;
+      padding-top: 2.5rem;
     }
 
     .login-form {
@@ -204,7 +204,11 @@
     /* ===== BOTTOM: Footer (always pinned to bottom) ===== */
     .auth-footer {
       flex-shrink: 0;
-      padding-top: 2.5rem;
+      transition: margin-top 0.6s ease 0.3s;
+    }
+
+    .auth-footer.at-bottom {
+      margin-top: auto;
     }
 
     .footer-org {
@@ -229,15 +233,18 @@
 
     /* Progress line (text + bar) */
     .progress-line {
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
       gap: 0.4rem;
-      transition: opacity 0.4s ease;
-      margin-bottom: 0;
+      transition: opacity 0.4s ease, max-height 0.6s ease 0.2s;
+      max-height: 60px;
+      overflow: hidden;
     }
 
     .progress-line.hiding {
       opacity: 0;
+      max-height: 0;
     }
 
     .progress-text {
@@ -284,18 +291,15 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .auth-card {
-        flex-direction: column;
         max-width: 440px;
         height: auto;
-        min-height: 600px;
+        min-height: 520px;
       }
       .auth-right {
-        min-height: 160px;
-        order: -1;
+        display: none;
       }
       .auth-left {
-        padding: 2rem 1.75rem;
-        min-height: 440px;
+        padding: 40px 32px 32px 32px;
       }
       .login-form { width: 100%; }
     }
@@ -380,13 +384,13 @@
             &copy; 1985&ndash;2026 ДРПО ГлавНИВЦ. Товарный знак &laquo;Альтера&raquo; зарегистрирован.<br>
             <a href="#">Свидетельство о регистрации</a> &middot; <a href="#">Информация о лицензии</a>
           </div>
+        </div>
 
-          <!-- Progress (visible during splash, fades out) -->
-          <div class="progress-line" id="progressLine">
-            <div class="progress-text"><strong>Загрузка:</strong> <span id="progressStatus">Выполняется интеграция с CRM...</span></div>
-            <div class="progress-bar">
-              <div class="progress-fill" id="progressFill"></div>
-            </div>
+        <!-- Progress (separate from footer, collapses after boot) -->
+        <div class="progress-line" id="progressLine">
+          <div class="progress-text"><strong>Загрузка:</strong> <span id="progressStatus">Выполняется интеграция с CRM...</span></div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
           </div>
         </div>
 
@@ -430,6 +434,7 @@
       var progressLine   = document.getElementById('progressLine');
       var loginForm      = document.getElementById('loginForm');
       var brandLogo      = document.getElementById('brandLogo');
+      var authFooter     = document.querySelector('.auth-footer');
 
       var statusMessages = [
         'Выполняется интеграция с CRM...',
@@ -455,6 +460,7 @@
         progressStatus.textContent = statusMessages[0];
         progressLine.classList.remove('hiding');
         loginForm.classList.remove('visible');
+        authFooter.classList.remove('at-bottom');
 
         var msgIndex = 0;
         msgInterval = setInterval(function () {
@@ -486,9 +492,10 @@
 
       function transitionToLogin() {
         progressLine.classList.add('hiding');
+        authFooter.classList.add('at-bottom');
         setTimeout(function () {
           loginForm.classList.add('visible');
-        }, 400);
+        }, 500);
       }
 
       // Click logo to restart
