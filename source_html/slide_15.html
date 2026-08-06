@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Компоновка логотипа и охранное поле</title>
+<link rel="stylesheet" href="global.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+  /* ═══ Layout-specific styles for slide 15 ═══ */
+
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  /* ── Logo lockup showcase cards ────────────────────────────── */
+  .lockup-card {
+    padding: 18px 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 240px;
+  }
+  .lockup-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .lockup-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--text-primary);
+  }
+  .lockup-tag {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+  }
+  .lockup-tag.gold {
+    background: var(--gold-soft);
+    color: var(--gold);
+  }
+
+  /* The actual logo lockup preview area */
+  .lockup-stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-light-soft);
+    border-radius: 14px;
+    position: relative;
+    padding: 16px;
+    box-shadow:
+      inset 3px 3px 8px rgba(174, 184, 200, 0.3),
+      inset -3px -3px 8px rgba(255, 255, 255, 0.8);
+  }
+
+  /* The "Alterа" brand logo sign — circle with autorenew icon */
+  .brand-sign {
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand-sign .material-icons {
+    color: #FFFFFF;
+  }
+
+  /* Wordmark "АЛЬТЕРА" */
+  .brand-wordmark {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.32em;
+  }
+
+  /* Horizontal lockup */
+  .lockup-h {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  .lockup-h .brand-sign {
+    width: 56px;
+    height: 56px;
+  }
+  .lockup-h .brand-sign .material-icons {
+    font-size: 32px;
+  }
+  .lockup-h .brand-wordmark {
+    font-size: 26px;
+  }
+
+  /* Vertical lockup */
+  .lockup-v {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .lockup-v .brand-sign {
+    width: 72px;
+    height: 72px;
+  }
+  .lockup-v .brand-sign .material-icons {
+    font-size: 42px;
+  }
+  .lockup-v .brand-wordmark {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  /* Spec strip below each lockup */
+  .lockup-specs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+  }
+  .lockup-specs b {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* Use-cases row */
+  .lockup-uses {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    border-top: 1px solid var(--border-light);
+    padding-top: 8px;
+  }
+
+  /* ── Clear-space rules card (bottom row) ───────────────────── */
+  .clearspace-card {
+    padding: 18px 22px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .cs-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-primary);
+  }
+  .cs-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .cs-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--text-primary);
+    line-height: 1.45;
+  }
+  .cs-pill {
+    flex-shrink: 0;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+    min-width: 78px;
+    text-align: center;
+    margin-top: 1px;
+  }
+  .cs-pill.gold { background: var(--gold-soft); color: var(--gold); }
+  .cs-pill.gray { background: rgba(139, 149, 167, 0.18); color: var(--text-secondary); }
+  .cs-row .cs-text b { font-weight: 600; }
+
+  /* Left-aligned rule callout */
+  .leftalign-card {
+    padding: 14px 18px;
+    background: var(--accent-soft);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 64px;
+  }
+  .leftalign-card .material-icons {
+    color: var(--accent-deep);
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .leftalign-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    color: var(--text-primary);
+    line-height: 1.45;
+  }
+  .leftalign-text b { font-weight: 600; color: var(--accent-deep); }
+</style>
+</head>
+<body>
+<div class="slide" style="position: relative;">
+
+  <!-- Decorative bio-blobs -->
+  <div class="bio-blob tiffany" data-decor aria-hidden="true" style="width: 280px; height: 280px; top: -90px; right: -100px; opacity: 0.16;"></div>
+  <div class="bio-blob beige" data-decor aria-hidden="true" style="width: 200px; height: 200px; bottom: -80px; left: -60px; opacity: 0.22;"></div>
+
+  <!-- Brand mark & page num -->
+  <div class="brand-mark">МИС Альтера</div>
+  <div class="page-num">15 / 15</div>
+
+  <!-- Header -->
+  <div style="position: relative; z-index: 2; padding: 48px 64px 0;">
+    <div class="eyebrow" style="margin-bottom: 10px;">15 — КОМПОНОВКА И ОХРАННОЕ ПОЛЕ</div>
+    <h1 style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 32px; color: var(--text-primary); line-height: 1.12;">Горизонтальная и вертикальная версии фирменного блока.</h1>
+    <p style="font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text-secondary); max-width: 880px; margin-top: 8px; line-height: 1.55;">Две равноправные компоновки знака и текста. Правила охранного поля различаются для интерфейса, полиграфии и сложных композиций.</p>
+  </div>
+
+  <!-- Top: two lockup versions -->
+  <div style="position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 16px 64px 0;">
+
+    <!-- Horizontal lockup card -->
+    <div class="neu-card lockup-card">
+      <div class="lockup-title-row">
+        <div class="lockup-title">Горизонтальная</div>
+        <div class="lockup-tag">ОСНОВНАЯ · UI</div>
+      </div>
+
+      <div class="lockup-stage">
+        <div class="lockup-h">
+          <div class="brand-sign"><span class="material-icons">autorenew</span></div>
+          <div class="brand-wordmark">АЛЬТЕРА</div>
+        </div>
+      </div>
+
+      <div class="lockup-specs">
+        <div><b>Композиция:</b> знак слева, текст справа</div>
+        <div><b>Выравнивание:</b> по базовой линии текста</div>
+        <div><b>Пропорция знака к тексту:</b> 1 : 1,2 (или 1 : 1,5)</div>
+        <div><b>Отступ знак ↔ текст:</b> ¼ высоты знака</div>
+      </div>
+
+      <div class="lockup-uses"><b style="color: var(--text-primary);">Применение:</b> шапка веб-интерфейса, презентации, бланки, визитки.</div>
+    </div>
+
+    <!-- Vertical lockup card -->
+    <div class="neu-card lockup-card">
+      <div class="lockup-title-row">
+        <div class="lockup-title">Вертикальная</div>
+        <div class="lockup-tag gold">ПРЕМИАЛЬНАЯ · SPLASH</div>
+      </div>
+
+      <div class="lockup-stage">
+        <div class="lockup-v">
+          <div class="brand-sign"><span class="material-icons">autorenew</span></div>
+          <div class="brand-wordmark">АЛЬТЕРА</div>
+        </div>
+      </div>
+
+      <div class="lockup-specs">
+        <div><b>Композиция:</b> знак сверху, текст по центру снизу</div>
+        <div><b>Выравнивание:</b> строго по оси симметрии</div>
+        <div><b>Отступ знак ↔ текст:</b> ½ высоты знака</div>
+        <div><b>Эффект:</b> «воздух» и цельность блока</div>
+      </div>
+
+      <div class="lockup-uses"><b style="color: var(--text-primary);">Применение:</b> splash-скрины, заставки видео, обложки буклетов и плакатов.</div>
+    </div>
+  </div>
+
+  <!-- Bottom: clear-space rules + left-aligned exception -->
+  <div style="position: relative; z-index: 2; display: grid; grid-template-columns: 1.6fr 1fr; gap: 16px; padding: 16px 64px 28px;">
+
+    <!-- Clear-space rules card -->
+    <div class="neu-card clearspace-card">
+      <div class="cs-title">Охранное поле комбинированного логотипа</div>
+      <div style="font-family: 'Inter', sans-serif; font-size: 11px; color: var(--text-muted); margin-top: -4px;">Единица измерения — высота всего блока (знака или текста).</div>
+
+      <div class="cs-rows">
+        <div class="cs-row">
+          <span class="cs-pill">UI · светлая</span>
+          <span class="cs-text"><b>¼ высоты логотипа</b> до края контейнера. ≈ 16–24 пикселя для интерфейса.</span>
+        </div>
+        <div class="cs-row">
+          <span class="cs-pill gold">Полиграфия</span>
+          <span class="cs-text"><b>½ высоты логотипа</b>, но не менее 3 мм. Визитки, бланки, конверты.</span>
+        </div>
+        <div class="cs-row">
+          <span class="cs-pill gray">Сложные</span>
+          <span class="cs-text"><b>1 высота логотипа</b> во все стороны. Плакаты, баннеры с другими элементами.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Left-aligned exception card -->
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div class="leftalign-card">
+        <span class="material-icons">align_horizontal_left</span>
+        <div class="leftalign-text">
+          <b>Левофланговое расположение</b><br>
+          В хедерах и сайдбарах UI левое поле = 0. Правое, верхнее и нижнее — по правилам выше.
+        </div>
+      </div>
+      <div class="leftalign-card" style="background: var(--gold-soft);">
+        <span class="material-icons" style="color: var(--gold);">straighten</span>
+        <div class="leftalign-text">
+          <b style="color: var(--gold);">Минимальный размер</b><br>
+          Печать — 16 мм. Интерфейс — 48 px. Меньше — нельзя: теряется читаемость.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
