@@ -1,0 +1,265 @@
+/* МИС Альтера — Brand Book Global Stylesheet
+   Style: neomorphism + biophilic + glassmorphism
+   Palette: Tiffany #5ECEC1, Gold #C9A96E, Charcoal, Milky Beige
+   Type: Playfair Display (heading) + Inter (body) */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* ── Brand palette ─────────────────────────── */
+  --bg-light: #F9FAFB;          /* base canvas, light */
+  --bg-light-soft: #F1F4F6;     /* slightly recessed area */
+  --bg-dark: #161B22;           /* base canvas, dark */
+  --bg-dark-soft: #1C2230;      /* slightly raised dark */
+
+  --container-light: #FFFFFF;
+  --container-dark: #21262D;
+
+  --accent: #5ECEC1;            /* Tiffany — primary brand accent */
+  --accent-deep: #46B0A3;       /* hover/active darker */
+  --accent-soft: rgba(94, 206, 193, 0.12);
+  --accent-glow: rgba(94, 206, 193, 0.35);
+
+  --gold: #C9A96E;              /* premium accent for dark theme */
+  --gold-soft: rgba(201, 169, 110, 0.16);
+
+  --charcoal: #1A1F2E;          /* deep matte charcoal */
+  --charcoal-soft: #2A3142;
+  --beige: #F5EFE6;             /* milky beige */
+  --beige-deep: #E8DFD0;
+
+  /* Status colors */
+  --success: #27AE60;
+  --warning: #F2B84B;
+  --error:   #F35E62;
+  --info:    #386BF6;
+  --highlight: #8C56FF;
+
+  /* Text */
+  --text-primary:    #1A1F2E;
+  --text-secondary:  #4A5468;
+  --text-muted:      #8B95A7;
+  --text-inverse:    #F9FAFB;
+  --text-inv-muted:  #9CA9BC;
+
+  --border-light: rgba(26, 31, 46, 0.08);
+  --border-dark:  rgba(255, 255, 255, 0.08);
+
+  /* ── Typography tokens ─────────────────────── */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-num:     'Inter', system-ui, sans-serif;
+
+  --fs-display: 64px;
+  --fs-h1:      40px;
+  --fs-h2:      30px;
+  --fs-h3:      22px;
+  --fs-body:    16px;
+  --fs-small:   13px;
+  --fs-micro:   11px;
+}
+
+/* ── Reset & canvas ──────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: #DDE2E8;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.slide {
+  width: 1280px;
+  height: 720px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-light);
+  color: var(--text-primary);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+}
+
+.slide.dark {
+  background: var(--bg-dark);
+  color: var(--text-inverse);
+}
+
+/* ── Reusable surfaces ───────────────────────── */
+
+/* Neomorph card — soft extruded surface, light theme */
+.neu-card {
+  background: var(--bg-light);
+  border-radius: 24px;
+  box-shadow:
+    8px 8px 20px rgba(174, 184, 200, 0.45),
+    -8px -8px 20px rgba(255, 255, 255, 0.95);
+}
+
+.neu-card-inset {
+  background: var(--bg-light);
+  border-radius: 20px;
+  box-shadow:
+    inset 4px 4px 10px rgba(174, 184, 200, 0.4),
+    inset -4px -4px 10px rgba(255, 255, 255, 0.9);
+}
+
+/* Dark neomorph */
+.neu-card-dark {
+  background: var(--bg-dark);
+  border-radius: 24px;
+  box-shadow:
+    8px 8px 20px rgba(0, 0, 0, 0.55),
+    -8px -8px 20px rgba(50, 58, 75, 0.35);
+}
+
+/* Glassmorphism panel */
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(26, 31, 46, 0.08);
+}
+
+.glass-dark {
+  background: rgba(33, 38, 45, 0.55);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* Placeholder for future illustration — soft neomorph card */
+.illustration-ph {
+  background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-light-soft) 100%);
+  border-radius: 20px;
+  box-shadow:
+    inset 4px 4px 10px rgba(174, 184, 200, 0.35),
+    inset -4px -4px 10px rgba(255, 255, 255, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--text-muted);
+  border: 1px dashed rgba(94, 206, 193, 0.35);
+}
+
+.illustration-ph .ph-icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent-deep);
+}
+
+.illustration-ph .ph-caption {
+  font-size: var(--fs-small);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.illustration-ph .ph-sub {
+  font-size: var(--fs-micro);
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* Color chip */
+.chip {
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--text-inverse);
+  min-height: 96px;
+  box-shadow: 0 4px 16px rgba(26, 31, 46, 0.1);
+}
+
+/* ── Decorative bio waves ─────────────────────── */
+.bio-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bio-blob.tiffany { background: radial-gradient(circle, var(--accent) 0%, transparent 70%); }
+.bio-blob.beige   { background: radial-gradient(circle, var(--beige) 0%, transparent 70%); }
+.bio-blob.gold    { background: radial-gradient(circle, var(--gold) 0%, transparent 70%); opacity: 0.25; }
+
+/* ── Page chrome ──────────────────────────────── */
+.page-num {
+  position: absolute;
+  bottom: 28px;
+  right: 36px;
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  z-index: 10;
+}
+.slide.dark .page-num { color: var(--text-inv-muted); }
+
+.brand-mark {
+  position: absolute;
+  top: 28px;
+  left: 36px;
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  z-index: 10;
+}
+.slide.dark .brand-mark { color: var(--text-inv-muted); }
+
+/* Section eyebrow */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+}
+
+.slide.dark .eyebrow { color: var(--gold); }
+
+/* Headings driven by inline styles using tokens */
+h1, h2, h3, .heading {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  line-height: 1.12;
+  font-weight: 700;
+}
+.slide.dark h1, .slide.dark h2, .slide.dark h3, .slide.dark .heading {
+  color: var(--text-inverse);
+}
+
+/* ── Utility ──────────────────────────────────── */
+.hidden { display: none !important; }
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}

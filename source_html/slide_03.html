@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Фирменный знак — Логотип</title>
+<link rel="stylesheet" href="global.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+  .showcase-scene {
+    height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .logo-mark {
+    width: 200px;
+    height: 200px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 32px rgba(94,206,193,0.35);
+  }
+  .logo-mark .material-icons {
+    font-size: 110px;
+    color: #FFFFFF;
+  }
+  .showcase-caption {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .rule-card {
+    padding: 16px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .rule-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .rule-icon .material-icons {
+    font-size: 18px;
+    color: var(--accent-deep);
+  }
+  .rule-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+  }
+  .rule-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+  }
+</style>
+</head>
+<body>
+<div class="slide" style="position: relative;">
+
+  <!-- Decorative bio-blob -->
+  <div class="bio-blob beige" data-decor aria-hidden="true" style="width: 240px; height: 240px; top: -80px; right: -60px; opacity: 0.25;"></div>
+
+  <!-- Brand mark & page num -->
+  <div class="brand-mark">МИС Альтера</div>
+  <div class="page-num">03 / 14</div>
+
+  <!-- Header -->
+  <div style="position: relative; z-index: 2; padding: 56px 64px 0;">
+    <div class="eyebrow" style="margin-bottom: 14px;">03 — ФИРМЕННЫЙ ЗНАК</div>
+    <h1 style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 38px; color: var(--text-primary); line-height: 1.15;">Логотип: Символ целостности.</h1>
+    <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: var(--text-secondary); max-width: 780px; margin-top: 12px; line-height: 1.55;">Логотип представляет собой сферический знак с тремя диагональными изогнутыми линиями. Метафора: земной шар, круговорот данных, непрерывное взаимодействие между пациентом, врачом и системой. Линии динамичны, но сбалансированы — спокойствие и уверенность.</p>
+  </div>
+
+  <!-- Main zone -->
+  <div style="position: relative; z-index: 2; display: flex; gap: 32px; padding: 32px 64px 64px;">
+
+    <!-- LEFT — showcase -->
+    <div style="width: 45%;">
+      <div class="neu-card showcase-scene">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <div class="logo-mark">
+            <span class="material-icons">autorenew</span>
+          </div>
+          <div class="showcase-caption">ОСНОВНАЯ ВЕРСИЯ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT — rules list -->
+    <div style="width: 55%; display: flex; flex-direction: column;">
+      <h2 style="font-family: 'Playfair Display', serif; font-weight: 600; font-size: 22px; color: var(--text-primary); margin-bottom: 18px;">Основные правила</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div class="neu-card-inset rule-card">
+          <div class="rule-icon"><span class="material-icons">palette</span></div>
+          <div>
+            <div class="rule-title">Цветная версия</div>
+            <div class="rule-text">Tiffany #5ECEC1 на светлом фоне. Основная для цифровой среды.</div>
+          </div>
+        </div>
+
+        <div class="neu-card-inset rule-card">
+          <div class="rule-icon"><span class="material-icons">contrast</span></div>
+          <div>
+            <div class="rule-title">Монохром</div>
+            <div class="rule-text">Чёрный/тёмно-серый на белой бумаге. Белый на тёмных носителях.</div>
+          </div>
+        </div>
+
+        <div class="neu-card-inset rule-card">
+          <div class="rule-icon"><span class="material-icons">straighten</span></div>
+          <div>
+            <div class="rule-title">Минимальные размеры</div>
+            <div class="rule-text">Печать — 16 мм. Интерфейс — 48 пикселей. Меньше — нельзя: теряется читаемость линий.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

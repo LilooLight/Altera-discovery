@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>МИС Альтера — Спасибо за внимание</title>
+<link rel="stylesheet" href="global.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+  .closing-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("bg_closing.jpg");
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .closing-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,31,46,0.3) 0%, rgba(26,31,46,0.65) 100%);
+    z-index: 1;
+  }
+  .closing-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 64px;
+  }
+  .closing-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #F5EFE6;
+    opacity: 0.85;
+    margin-top: 80px;
+  }
+  .logo-circle {
+    width: 140px;
+    height: 140px;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+  }
+  .logo-circle .material-icons {
+    font-size: 72px;
+    color: #5ECEC1;
+  }
+  .closing-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 64px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 1.1;
+    margin-top: 28px;
+  }
+  .accent-line {
+    width: 80px;
+    height: 1px;
+    background: var(--accent);
+    margin: 24px auto;
+  }
+  .closing-sub {
+    font-family: var(--font-body);
+    font-size: 18px;
+    color: #F5EFE6;
+    opacity: 0.9;
+    text-align: center;
+    max-width: 700px;
+    line-height: 1.5;
+  }
+  .contacts {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 48px;
+    margin-bottom: 60px;
+  }
+  .contact-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .contact-label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .contact-value {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: #FFFFFF;
+  }
+  .footer-fineprint {
+    position: absolute;
+    bottom: 28px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #F5EFE6;
+    opacity: 0.5;
+    z-index: 3;
+  }
+</style>
+</head>
+<body>
+<div class="slide" style="position:relative;">
+  <div class="closing-bg" data-decor></div>
+  <div class="closing-overlay" data-decor></div>
+
+  <div class="closing-content">
+    <div class="closing-eyebrow">14 — ЗАКЛЮЧЕНИЕ</div>
+
+    <div class="logo-circle">
+      <span class="material-icons">autorenew</span>
+    </div>
+
+    <h1 class="closing-title">Спасибо за внимание!</h1>
+
+    <div class="accent-line"></div>
+
+    <p class="closing-sub">По всем вопросам о брендинге и соблюдению правил обращайтесь в отдел маркетинга и дизайна.</p>
+
+    <div class="contacts">
+      <div class="contact-col">
+        <div class="contact-label">EMAIL</div>
+        <div class="contact-value">brand@altera-mis.ru</div>
+      </div>
+      <div class="contact-col">
+        <div class="contact-label">INTRANET</div>
+        <div class="contact-value">design.altera-internal</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-fineprint">МИС АЛЬТЕРА · БРЕНД-БУК · 2025</div>
+</div>
+</body>
+</html>
